@@ -1,6 +1,6 @@
-# base_source
-
+# Base Source Flutter project
 Coding pattern MVVM - BaseSource Flutter by GetX
+
 ![image info](/readme/mvvm.png)
 ## Features
 - [x] Coding pattern MVVP for Flutter by GetX
@@ -8,6 +8,9 @@ Coding pattern MVVM - BaseSource Flutter by GetX
 - [x] Apply compute() for json parse - restful api - GetConnect
 - [x] Apply DI ViewModel by Bindings Getx
 - [x] Support multi-language
+- [x] Add google map
+- [x] Draw a path between two places on Google Map
+- [x] Calculate distance between 2 locations
 ## Require
 This project is using getX(4.3.8 or upper)
 ```
