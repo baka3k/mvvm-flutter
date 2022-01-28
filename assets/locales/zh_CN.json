@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "蔬果"
+  },
+  "locale": {
+    "title": "语言",
+    "zh": "中文",
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "change_language": "改變語言 ?"
+  },
+  "signin": {
+    "title": "Sign In",
+    "username": "User name",
+    "password": "Password",
+    "error_username_length": "min. 5 chars, max. 50 chars",
+    "error_username_format": "Format is invalid",
+    "error_password_length": "min. 5 chars, max. 20 chars",
+    "error_password_format": "Format is invalid"
+  }
+}

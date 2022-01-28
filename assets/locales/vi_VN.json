@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "Base Ứng dụng"
+  },
+  "locale": {
+    "title": "Ngôn ngữ",
+    "zh": "中文",
+    "en": "English",
+    "vi": "Tiếng Việt",
+    "change_language": "Thay đổi ngôn ngữ?"
+  },
+  "signin": {
+    "title": "Đăng nhập",
+    "username": "Tài khoản",
+    "password": "Mật khẩu",
+    "error_username_length": "min. 5 chars, max. 50 chars",
+    "error_username_format": "Format is invalid",
+    "error_password_length": "min. 5 chars, max. 20 chars",
+    "error_password_format": "Format is invalid"
+  }
+}
