@@ -35,7 +35,7 @@ LanguageService.to.changeLocale(Locale('en', 'US'));
 ```
 
 ### Add Google Map
-If you want to Google Map on this project - please create API key from https://console.cloud.google.com/
+If you want to use Google Map on this project - please create API key from https://console.cloud.google.com/
 and add your key in 3 files:
 
 1. app/feature/map/secrets.dart
