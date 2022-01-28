@@ -1,7 +1,7 @@
 # base_source
 
 Coding pattern MVVM - BaseSource Flutter by GetX
-
+![image info](/readme/mvvm.png)
 ## Require
 This project is using getX(4.3.8 or upper)
 ```
@@ -32,5 +32,6 @@ LanguageService.to.changeLocale(Locale('en', 'US'));
 - [x] Apply service pattern & reposiory pattern
 - [x] Apply compute() to parser restful api - GetConnect
 - [x] Apply DI ViewModel by Bindings Getx
+- [x] Support multi-language
 
 ## Change
