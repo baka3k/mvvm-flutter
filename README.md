@@ -4,7 +4,7 @@ Coding pattern MVVM - BaseSource Flutter by GetX
 ![image info](/readme/mvvm.png)
 ## Features
 - [x] Coding pattern MVVP for Flutter by GetX
-- [x] Apply service pattern & repository pattern
+- [x] Apply Repository Pattern for Model 
 - [x] Apply compute() for json parse - restful api - GetConnect
 - [x] Apply DI ViewModel by Bindings Getx
 - [x] Support multi-language
