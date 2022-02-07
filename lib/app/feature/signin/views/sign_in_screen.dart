@@ -18,9 +18,8 @@ class SignInScreen extends GetWidget<SignInViewModel> {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: SafeArea(
         child: Scaffold(
-          // resizeToAvoidBottomInset: false,
           backgroundColor: signInBackGroundColor,
-          body: _uiSignIn1(),
+          body: _uiSignIn(),
         ),
       ),
     );
@@ -51,7 +50,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
     });
   }
 
-  _uiSignIn1() {
+  _uiSignIn() {
     return LayoutBuilder(builder: (context, constraints) {
       print("_uiSignIn1 $constraints");
       return SingleChildScrollView(
@@ -135,7 +134,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
                       child: Text(
                         "New to Scratch?",
                         style: textStyleApp.copyWith(
-                            fontSize: 13,
+                            fontSize: 12,
                             color: const Color.fromARGB(255, 168, 168, 168)),
                       ),
                     ),
@@ -185,90 +184,90 @@ class SignInScreen extends GetWidget<SignInViewModel> {
     );
   }
 
-  _uiSignIn() {
-    return Stack(
-      children: [
-        Container(
-          child: _inputLayout(),
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.fitWidth,
-                  image: AssetImage("assets/images/sign_in_bg.png")),
-              gradient: LinearGradient(
-                colors: [topColor, bottomColor],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              )),
-        ),
-      ],
-    );
-  }
+  // _uiSignIn() {
+  //   return Stack(
+  //     children: [
+  //       Container(
+  //         child: _inputLayout(),
+  //         decoration: const BoxDecoration(
+  //             image: DecorationImage(
+  //                 fit: BoxFit.fitWidth,
+  //                 image: AssetImage("assets/images/sign_in_bg.png")),
+  //             gradient: LinearGradient(
+  //               colors: [topColor, bottomColor],
+  //               begin: Alignment.topCenter,
+  //               end: Alignment.bottomCenter,
+  //             )),
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  _inputLayout() {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        return Center(
-          child: Container(
-            decoration: const BoxDecoration(color: Colors.white),
-            width: constraints.maxWidth,
-            height: constraints.maxWidth,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      LocaleKeys.signin_title.tr,
-                      style: textStyleLarge,
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Obx(() {
-                      return TextField(
-                        onChanged: controller.onUsernameChanged,
-                        decoration: InputDecoration(
-                          errorText: controller.userErrorText.value,
-                          labelText: LocaleKeys.signin_username.tr,
-                        ),
-                      );
-                    }),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Obx(() {
-                      return TextField(
-                        onChanged: controller.onPasswordChanged,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          errorText: controller.passwordErrorText.value,
-                          labelText: LocaleKeys.signin_password.tr,
-                        ),
-                      );
-                    }),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    HiElevatedButton(
-                      width: double.infinity,
-                      onPressed: () {
-                        _doSignIn();
-                      },
-                      borderRadius: BorderRadius.circular(20),
-                      child: Text(LocaleKeys.signin_title.tr),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
+  // _inputLayout() {
+  //   return LayoutBuilder(
+  //     builder: (BuildContext context, BoxConstraints constraints) {
+  //       return Center(
+  //         child: Container(
+  //           decoration: const BoxDecoration(color: Colors.white),
+  //           width: constraints.maxWidth,
+  //           height: constraints.maxWidth,
+  //           child: SingleChildScrollView(
+  //             child: Padding(
+  //               padding: const EdgeInsets.all(16.0),
+  //               child: Column(
+  //                 children: [
+  //                   const SizedBox(
+  //                     height: 15,
+  //                   ),
+  //                   Text(
+  //                     LocaleKeys.signin_title.tr,
+  //                     style: textStyleLarge,
+  //                   ),
+  //                   const SizedBox(
+  //                     height: 15,
+  //                   ),
+  //                   Obx(() {
+  //                     return TextField(
+  //                       onChanged: controller.onUsernameChanged,
+  //                       decoration: InputDecoration(
+  //                         errorText: controller.userErrorText.value,
+  //                         labelText: LocaleKeys.signin_username.tr,
+  //                       ),
+  //                     );
+  //                   }),
+  //                   const SizedBox(
+  //                     height: 15,
+  //                   ),
+  //                   Obx(() {
+  //                     return TextField(
+  //                       onChanged: controller.onPasswordChanged,
+  //                       obscureText: true,
+  //                       decoration: InputDecoration(
+  //                         errorText: controller.passwordErrorText.value,
+  //                         labelText: LocaleKeys.signin_password.tr,
+  //                       ),
+  //                     );
+  //                   }),
+  //                   const SizedBox(
+  //                     height: 15,
+  //                   ),
+  //                   HiElevatedButton(
+  //                     width: double.infinity,
+  //                     onPressed: () {
+  //                       _doSignIn();
+  //                     },
+  //                     borderRadius: BorderRadius.circular(20),
+  //                     child: Text(LocaleKeys.signin_title.tr),
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   void _doSignIn() {
     controller.doSignIn();
