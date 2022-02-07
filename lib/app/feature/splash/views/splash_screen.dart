@@ -25,11 +25,25 @@ class SplashScreen extends GetWidget<SplashViewModel> {
   }
 
   _backgroundPhoto() {
-    return Image.asset(
-      "assets/images/splash.jpg",
-      fit: BoxFit.fitWidth,
-      width: double.infinity,
-    );
+    return LayoutBuilder(builder: (context, contrains) {
+      return Stack(
+        children: [
+          Image.asset(
+            "assets/images/sign_in_bg_scratch_ui.jpg",
+            fit: BoxFit.fitWidth,
+            width: double.infinity,
+          ),
+          Positioned(
+            top: contrains.maxHeight * 0.4,
+            left: contrains.maxWidth * 0.35,
+            child: Image.asset(
+              "assets/images/scratch_logo.png",
+              width: contrains.maxWidth * 0.25,
+            ),
+          ),
+        ],
+      );
+    });
   }
 
   gotoNextScreen() {

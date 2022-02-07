@@ -37,6 +37,8 @@ dependencies:
   google_maps_flutter: ^2.1.1
   # draw direction on map
   flutter_polyline_points: ^1.0.0
+  # add font 
+  google_fonts: ^2.3.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

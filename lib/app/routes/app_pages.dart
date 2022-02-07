@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 import 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.SPLASH;
+  static const INITIAL = Routes.SIGN_IN;
 
   static final routes = [
     GetPage(
@@ -45,7 +45,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.MAP,
-      page: () =>  MapScreen(),
+      page: () => MapScreen(),
       // binding: MapBinding(),
     ),
   ];
