@@ -63,7 +63,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Text(
-                  "Please login to continue.",
+                  LocaleKeys.signin_login_to_continue.tr,
                   style: textStyleApp.copyWith(fontSize: 13),
                 ),
               ),
@@ -77,8 +77,8 @@ class SignInScreen extends GetWidget<SignInViewModel> {
                         color: const Color.fromARGB(255, 96, 96, 96)),
                     decoration: InputDecoration(
                       errorText: controller.userErrorText.value,
-                      labelText:
-                          "Email address", //LocaleKeys.signin_username.tr,
+                      labelText: LocaleKeys
+                          .signin_email.tr, //LocaleKeys.signin_username.tr,
                     ),
                   );
                 }),
@@ -87,10 +87,13 @@ class SignInScreen extends GetWidget<SignInViewModel> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      _showToast(
+                          context, LocaleKeys.signin_under_developing.tr);
+                    },
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(18, 8, 18, 0),
-                      child: Text("Forgot Password?",
+                      child: Text(LocaleKeys.signin_forgot_pass.tr,
                           style: textStyleApp.copyWith(fontSize: 13)),
                     ),
                   ),
@@ -117,7 +120,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
                 child: ScratchElevatedButton(
                   width: double.infinity,
                   onPressed: () {
-                    // _doSignIn();
+                    _doSignIn();
                   },
                   borderRadius: BorderRadius.circular(4),
                   child: Text(LocaleKeys.signin_title.tr),
@@ -127,19 +130,21 @@ class SignInScreen extends GetWidget<SignInViewModel> {
                 height: 30,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  _showToast(context, LocaleKeys.signin_under_developing.tr);
+                },
                 child: Column(
                   children: [
                     Center(
                       child: Text(
-                        "New to Scratch?",
+                        LocaleKeys.signin_new_to_scratch.tr,
                         style: textStyleApp.copyWith(
                             fontSize: 12,
                             color: const Color.fromARGB(255, 168, 168, 168)),
                       ),
                     ),
                     Center(
-                      child: Text("Create Account Here",
+                      child: Text(LocaleKeys.signin_create_account.tr,
                           style: textStyleApp.copyWith(
                               fontSize: 14,
                               color: mainColor,
@@ -176,7 +181,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
         Padding(
             padding: EdgeInsets.all(widthScreen * 0.06),
             child: Text(
-              "Welcome Back!",
+              LocaleKeys.signin_welcome_back.tr,
               style: textStyleApp.copyWith(
                   fontWeight: FontWeight.bold, fontSize: 15),
             ))
@@ -184,96 +189,15 @@ class SignInScreen extends GetWidget<SignInViewModel> {
     );
   }
 
-  // _uiSignIn() {
-  //   return Stack(
-  //     children: [
-  //       Container(
-  //         child: _inputLayout(),
-  //         decoration: const BoxDecoration(
-  //             image: DecorationImage(
-  //                 fit: BoxFit.fitWidth,
-  //                 image: AssetImage("assets/images/sign_in_bg.png")),
-  //             gradient: LinearGradient(
-  //               colors: [topColor, bottomColor],
-  //               begin: Alignment.topCenter,
-  //               end: Alignment.bottomCenter,
-  //             )),
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  // _inputLayout() {
-  //   return LayoutBuilder(
-  //     builder: (BuildContext context, BoxConstraints constraints) {
-  //       return Center(
-  //         child: Container(
-  //           decoration: const BoxDecoration(color: Colors.white),
-  //           width: constraints.maxWidth,
-  //           height: constraints.maxWidth,
-  //           child: SingleChildScrollView(
-  //             child: Padding(
-  //               padding: const EdgeInsets.all(16.0),
-  //               child: Column(
-  //                 children: [
-  //                   const SizedBox(
-  //                     height: 15,
-  //                   ),
-  //                   Text(
-  //                     LocaleKeys.signin_title.tr,
-  //                     style: textStyleLarge,
-  //                   ),
-  //                   const SizedBox(
-  //                     height: 15,
-  //                   ),
-  //                   Obx(() {
-  //                     return TextField(
-  //                       onChanged: controller.onUsernameChanged,
-  //                       decoration: InputDecoration(
-  //                         errorText: controller.userErrorText.value,
-  //                         labelText: LocaleKeys.signin_username.tr,
-  //                       ),
-  //                     );
-  //                   }),
-  //                   const SizedBox(
-  //                     height: 15,
-  //                   ),
-  //                   Obx(() {
-  //                     return TextField(
-  //                       onChanged: controller.onPasswordChanged,
-  //                       obscureText: true,
-  //                       decoration: InputDecoration(
-  //                         errorText: controller.passwordErrorText.value,
-  //                         labelText: LocaleKeys.signin_password.tr,
-  //                       ),
-  //                     );
-  //                   }),
-  //                   const SizedBox(
-  //                     height: 15,
-  //                   ),
-  //                   HiElevatedButton(
-  //                     width: double.infinity,
-  //                     onPressed: () {
-  //                       _doSignIn();
-  //                     },
-  //                     borderRadius: BorderRadius.circular(20),
-  //                     child: Text(LocaleKeys.signin_title.tr),
-  //                   ),
-  //                 ],
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   );
-  // }
-
   void _doSignIn() {
     controller.doSignIn();
   }
 
   void goToNextScreen() {
     Get.offAllNamed(Routes.HOME);
+  }
+
+  void _showToast(context, mess) {
+    showToast(context: context, mess: mess);
   }
 }

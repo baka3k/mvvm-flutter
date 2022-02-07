@@ -21,6 +21,13 @@ class LocaleKeys {
   static const signin_title = 'signin_title';
   static const signin_username = 'signin_username';
   static const signin_password = 'signin_password';
+  static const signin_email = 'signin_email';
+  static const signin_under_developing = 'signin_under_developing';
+  static const signin_forgot_pass = 'signin_forgot_pass';
+  static const signin_new_to_scratch = 'signin_new_to_scratch';
+  static const signin_create_account = 'signin_create_account';
+  static const signin_login_to_continue = 'signin_login_to_continue';
+  static const signin_welcome_back = 'signin_welcome_back';
   static const signin_error_username_length = 'signin_error_username_length';
   static const signin_error_username_format = 'signin_error_username_format';
   static const signin_error_password_length = 'signin_error_password_length';
@@ -38,6 +45,13 @@ class Locales {
     'signin_title': 'Sign In',
     'signin_username': 'User name',
     'signin_password': 'Password',
+    'signin_email': 'Email andress',
+    'signin_under_developing': 'Under developing',
+    'signin_forgot_pass': 'Forgot Passwords?',
+    'signin_new_to_scratch': 'New to Scratch?',
+    'signin_create_account': 'Create Account Here',
+    'signin_login_to_continue': 'PLease login to continute',
+    'signin_welcome_back': 'Welcome Back!',
     'signin_error_username_length': 'min. 5 chars, max. 50 chars',
     'signin_error_username_format': 'Format is invalid',
     'signin_error_password_length': 'min. 5 chars, max. 20 chars',
@@ -53,6 +67,13 @@ class Locales {
     'signin_title': 'Sign In',
     'signin_username': 'User name',
     'signin_password': 'Password',
+    'signin_email': 'Email andress',
+    'signin_under_developing': 'Under developing',
+    'signin_forgot_pass': 'Forgot password?',
+    'signin_new_to_scratch': 'New to Scratch?',
+    'signin_create_account': 'Create Account Here',
+    'signin_login_to_continue': 'PLease login to continute',
+    'signin_welcome_back': 'Welcome Back!',
     'signin_error_username_length': 'min. 5 chars, max. 50 chars',
     'signin_error_username_format': 'Format is invalid',
     'signin_error_password_length': 'min. 5 chars, max. 20 chars',
@@ -68,6 +89,13 @@ class Locales {
     'signin_title': 'Đăng nhập',
     'signin_username': 'Tài khoản',
     'signin_password': 'Mật khẩu',
+    'signin_email': 'Địa chỉ email',
+    'signin_under_developing': 'Tính năng đang phát triển',
+    'signin_forgot_pass': 'Quên mật khẩu?',
+    'signin_new_to_scratch': 'Chưa có tài khoản?',
+    'signin_create_account': 'Tạo tài khoản mới',
+    'signin_login_to_continue': 'Đăng nhập để tiếp tục',
+    'signin_welcome_back': 'Chào mừng quay trở lại!',
     'signin_error_username_length': 'min. 5 chars, max. 50 chars',
     'signin_error_username_format': 'Format is invalid',
     'signin_error_password_length': 'min. 5 chars, max. 20 chars',

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-showAlertDialog({context, String? title, String? message, String? textButton, Function? onConfirmed, Function? onCancel}) async {
+showAlertDialog(
+    {context,
+    String? title,
+    String? message,
+    String? textButton,
+    Function? onConfirmed,
+    Function? onCancel}) async {
   return showDialog<bool>(
     context: context,
     // barrierDismissible: false, // user must tap button!
@@ -37,4 +43,10 @@ showAlertDialog({context, String? title, String? message, String? textButton, Fu
       return true;
     }
   });
+}
+
+showToast({required BuildContext context, required String mess}) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    content: Text(mess),
+  ));
 }
