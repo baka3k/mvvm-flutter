@@ -1,6 +1,7 @@
 import 'package:base_source/generated/locales.g.dart';
 import 'package:base_source/translations/language_service.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
@@ -15,6 +16,7 @@ class BaseApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    updateStatusBar();
     return GetMaterialApp(
       title: 'MVVM Base Source',
       debugShowCheckedModeBanner: false,
@@ -24,12 +26,24 @@ class BaseApp extends StatelessWidget {
       locale: LanguageService.to.locale, // locale
       fallbackLocale: Locale("en", "US"), // false back
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+            iconTheme: IconThemeData(color: Colors.blue),
+            elevation: 0.0,
+            color: Colors.white),
         primarySwatch: Colors.blue,
         brightness: Brightness.light,
+        primaryColor: Colors.amber,
+        scaffoldBackgroundColor: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: HomeScreen()
     );
+  }
+
+  void updateStatusBar() {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark));
   }
 }
 

@@ -6,6 +6,7 @@ import 'package:base_source/app/feature/signin/viewmodels/sign_in_view_model.dar
 import 'package:base_source/app/routes/app_routes.dart';
 import 'package:base_source/generated/locales.g.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class SignInScreen extends GetWidget<SignInViewModel> {
@@ -16,11 +17,9 @@ class SignInScreen extends GetWidget<SignInViewModel> {
     _observeScreenState(context);
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: signInBackGroundColor,
-          body: _uiSignIn(),
-        ),
+      child: Scaffold(
+        backgroundColor: signInBackGroundColor,
+        body: _uiSignIn(),
       ),
     );
   }
@@ -171,7 +170,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
           height: heightScreen * 0.35,
         ),
         Positioned(
-          top: widthScreen * 0.06,
+          top: widthScreen * 0.06 + 18,
           left: widthScreen * 0.06,
           child: Image.asset(
             "assets/images/scratch_logo.png",
