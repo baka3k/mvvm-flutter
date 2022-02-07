@@ -1,5 +1,6 @@
 import '../base/data_result.dart';
 import 'model/account_model.dart';
+import 'service/account_service.dart';
 
 abstract class AccountRepository {
   Future<DataResult<AccountModel>> signIn(String userName, String password);
