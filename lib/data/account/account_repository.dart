@@ -1,6 +1,5 @@
-import 'package:base_source/data/account/model/account_model.dart';
-import 'package:base_source/data/account/service/account_service.dart';
-import 'package:base_source/data/base/data_result.dart';
+import '../base/data_result.dart';
+import 'model/account_model.dart';
 
 abstract class AccountRepository {
   Future<DataResult<AccountModel>> signIn(String userName, String password);
@@ -12,7 +11,8 @@ class AccountRepositoryImpl implements AccountRepository {
   AccountRepositoryImpl(this._accountServices);
 
   @override
-  Future<DataResult<AccountModel>> signIn(String userName, String password) async {
+  Future<DataResult<AccountModel>> signIn(
+      String userName, String password) async {
     return _accountServices.signIn(userName, password);
   }
 }

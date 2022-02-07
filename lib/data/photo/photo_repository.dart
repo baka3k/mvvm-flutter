@@ -1,6 +1,6 @@
-import 'package:base_source/data/base/data_result.dart';
-import 'package:base_source/data/photo/model/photo_list_model.dart';
-import 'package:base_source/data/photo/service/photo_service.dart';
+import '../base/data_result.dart';
+import 'model/photo_list_model.dart';
+import 'service/photo_service.dart';
 
 abstract class PhotoRepository {
   Future<DataResult<List<Photo>>> getPhotos();

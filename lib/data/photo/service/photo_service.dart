@@ -1,7 +1,8 @@
 import 'package:base_source/app/hardware/connection.dart';
-import 'package:base_source/data/base/base_service.dart';
-import 'package:base_source/data/base/data_result.dart';
-import 'package:base_source/data/photo/model/photo_list_model.dart';
+
+import '../../base/base_service.dart';
+import '../../base/data_result.dart';
+import '../model/photo_list_model.dart';
 
 class PhotoService extends BaseService {
   PhotoService(NetworkInfor networkInfor) : super(networkInfor);

@@ -1,16 +1,18 @@
 import 'dart:async';
 
 import 'package:base_source/app/hardware/connection.dart';
-import 'package:base_source/data/base/base_service.dart';
-import 'package:base_source/data/base/data_result.dart';
-import 'package:base_source/data/user/model/users_list_model.dart';
+
+import '../../base/base_service.dart';
+import '../../base/data_result.dart';
+import '../model/users_list_model.dart';
 
 class UserServices extends BaseService {
   UserServices(NetworkInfor networkInfor) : super(networkInfor);
 
   Future<DataResult<List<UserModel>>> getUsers() async {
     try {
-      return httpGet("https://jsonplaceholder.typicode.com/users",usersListModelFromJson);
+      return httpGet(
+          "https://jsonplaceholder.typicode.com/users", usersListModelFromJson);
     } catch (exception) {
       return getError(exception);
     }

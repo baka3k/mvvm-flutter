@@ -2,10 +2,11 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:base_source/app/hardware/connection.dart';
-import 'package:base_source/data/base/data_result.dart';
-import 'package:base_source/data/base/service_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+
+import 'data_result.dart';
+import 'service_state.dart';
 
 const timeOutMess = "Time out";
 const timeOutDuration = Duration(seconds: 10);
@@ -21,7 +22,8 @@ abstract class BaseService extends GetConnect {
     var network = await _networkInfor.isNetworkConnected();
     if (network) {
       var response = await get(url, headers: headers).timeout(timeOutDuration);
-      print("BaseService #httpGet() StatusCode: ${response.statusCode} || ResponseData: ${response.bodyString}");
+      print(
+          "BaseService #httpGet() StatusCode: ${response.statusCode} || ResponseData: ${response.bodyString}");
       if (response.bodyString == null || response.bodyString!.isEmpty) {
         return DataResult.failure(
             APIFailure(invalidResponse, 'Invalid Response'));
@@ -30,7 +32,8 @@ abstract class BaseService extends GetConnect {
           await compute(jsonParseFunc, response.bodyString ?? ""); // compute
       return DataResult.success(data);
     } else {
-      return DataResult.failure(APIFailure(noInternet, 'No Internet Connection'));
+      return DataResult.failure(
+          APIFailure(noInternet, 'No Internet Connection'));
     }
   }
 

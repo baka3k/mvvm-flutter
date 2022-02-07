@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:base_source/app/hardware/connection.dart';
-import 'package:base_source/data/account/model/account_model.dart';
-import 'package:base_source/data/base/base_service.dart';
-import 'package:base_source/data/base/data_result.dart';
+import '../../base/base_service.dart';
+import '../../base/data_result.dart';
+import '../model/account_model.dart';
 
 class AccountServices extends BaseService {
   AccountServices(NetworkInfor networkInfor) : super(networkInfor);
@@ -12,9 +12,8 @@ class AccountServices extends BaseService {
     try {
       // return
       //   httpGet("https://jsonplaceholder.typicode.com/users", accountModelFromJson);
-      var data =
-                AccountModel(code: 100, message: "ok"); // dummy data for test
-            return DataResult.success(data);
+      var data = AccountModel(code: 100, message: "ok"); // dummy data for test
+      return DataResult.success(data);
     } catch (exception) {
       return getError(exception);
     }
