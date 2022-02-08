@@ -20,7 +20,7 @@ class BaseApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'MVVM Base Source',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppPages.INITIAL,
+      initialRoute: AppPages.initial,
       getPages: AppPages.routes,
       translationsKeys: AppTranslation.translations,
       locale: LanguageService.to.locale, // locale

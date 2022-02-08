@@ -1,8 +1,9 @@
 abstract class Routes {
-  static const SPLASH = '/splash';
-  static const SIGN_IN = '/signin';
-  static const HOME = '/home';
-  static const DETAILS = '/details';
-  static const PHOTO_LIST = '/photolist';
-  static const MAP = '/map';
+  static const splash = '/splash';
+  static const signIn = '/signin';
+  static const home = '/home';
+  static const details = '/details';
+  static const photoList = '/photolist';
+  static const map = '/map';
+  static const recipeFeed = '/recipe_feed';
 }

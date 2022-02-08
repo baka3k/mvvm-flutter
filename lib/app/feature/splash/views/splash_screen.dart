@@ -48,6 +48,6 @@ class SplashScreen extends GetWidget<SplashViewModel> {
 
   gotoNextScreen() {
     // offAllNamed clean SplashScreen from memory
-    Get.offAllNamed(Routes.SIGN_IN);
+    Get.offAllNamed(Routes.signIn);
   }
 }

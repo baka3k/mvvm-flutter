@@ -107,7 +107,7 @@ class HomeScreen extends GetWidget<UserViewModel> {
       "phone": "${userModel.phone}",
       "website": "${userModel.website}",
     };
-    Get.toNamed(Routes.DETAILS, arguments: arguments);
+    Get.toNamed(Routes.details, arguments: arguments);
 
     // Get.toNamed(Routes.PHOTO_LIST);
   }

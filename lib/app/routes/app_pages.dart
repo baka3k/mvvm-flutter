@@ -1,5 +1,4 @@
 import 'package:base_source/app/bindings/home_binding.dart';
-import 'package:base_source/app/bindings/map_binding.dart';
 import 'package:base_source/app/bindings/photolist_binding.dart';
 import 'package:base_source/app/bindings/sign_in_binding.dart';
 import 'package:base_source/app/bindings/splash_binding.dart';
@@ -15,36 +14,36 @@ import 'package:get/get.dart';
 import 'app_routes.dart';
 
 class AppPages {
-  static const INITIAL = Routes.SIGN_IN;
+  static const initial = Routes.splash;
 
   static final routes = [
     GetPage(
-      name: Routes.SPLASH,
+      name: Routes.splash,
       page: () => const SplashScreen(),
       binding: SplashBinding(),
     ),
     GetPage(
-      name: Routes.SIGN_IN,
+      name: Routes.signIn,
       page: () => const SignInScreen(),
       binding: SignInBinding(),
     ),
     GetPage(
-      name: Routes.HOME,
+      name: Routes.home,
       page: () => HomeScreen(),
       binding: HomeBinding(),
     ),
     GetPage(
-      name: Routes.DETAILS,
+      name: Routes.details,
       page: () => const UserDetailsScreen(),
       binding: UserDetailBinding(),
     ),
     GetPage(
-      name: Routes.PHOTO_LIST,
+      name: Routes.photoList,
       page: () => const PhotoListScreen(),
       binding: PhotoListBinding(),
     ),
     GetPage(
-      name: Routes.MAP,
+      name: Routes.map,
       page: () => MapScreen(),
       // binding: MapBinding(),
     ),
