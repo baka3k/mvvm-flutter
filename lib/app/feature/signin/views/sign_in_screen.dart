@@ -6,7 +6,6 @@ import 'package:base_source/app/feature/signin/viewmodels/sign_in_view_model.dar
 import 'package:base_source/app/routes/app_routes.dart';
 import 'package:base_source/generated/locales.g.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class SignInScreen extends GetWidget<SignInViewModel> {
