@@ -74,6 +74,8 @@ class RecipeFeed extends GetWidget {
   _uiRecipe() {
     final PageController controller = PageController(viewportFraction: 0.9);
     return PageView.builder(
+        // pageSnapping: false,
+        physics: const BouncingScrollPhysics(),
         itemCount: 10,
         controller: controller,
         itemBuilder: (context, position) {
@@ -87,7 +89,13 @@ class RecipeFeed extends GetWidget {
         children: [
           Column(
             children: [
-              Expanded(child: Image.asset("assets/images/test_page.png")),
+              Expanded(
+                  child: AspectRatio(
+                      aspectRatio: 295 / 396,
+                      child: Image.asset(
+                        "assets/images/test_page.png",
+                        fit: BoxFit.fill,
+                      ))),
               _informationUI(constrains.maxWidth),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
@@ -168,7 +176,7 @@ class RecipeFeed extends GetWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(8 , 8, 16, 8),
+          padding: const EdgeInsets.fromLTRB(8, 8, 16, 8),
           child: SizedBox(
               width: maxWidth * 0.1,
               height: maxWidth * 0.1,
