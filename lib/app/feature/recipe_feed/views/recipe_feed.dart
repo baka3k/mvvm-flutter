@@ -72,9 +72,7 @@ class RecipeFeed extends GetWidget {
   }
 
   _uiRecipe() {
-    final PageController controller = PageController(
-      viewportFraction: 0.8
-    );
+    final PageController controller = PageController(viewportFraction: 0.9);
     return PageView.builder(
         itemCount: 10,
         controller: controller,
@@ -89,8 +87,22 @@ class RecipeFeed extends GetWidget {
         children: [
           _profileUI(constrains.maxWidth),
           // Flexible(child: Image.asset("assets/images/test_page.png")),
-          Expanded(child: Image.asset("assets/images/test_page.png", fit: BoxFit.fill,)),
-          _informationUI(constrains.maxWidth)
+          Expanded(
+              child: Image.asset(
+            "assets/images/test_page.png",
+            fit: BoxFit.fill,
+          )),
+          _informationUI(constrains.maxWidth),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+            child: Text(
+              "Apparently we had reached a great height in the atmosphere, for the sky was …",
+              style: textStyleApp.copyWith(
+                  color: const Color.fromARGB(255, 168, 168, 168),
+                  fontSize: 12),
+            ),
+          ),
+          _commentInfoUI(),
         ],
       );
     });
@@ -167,6 +179,42 @@ class RecipeFeed extends GetWidget {
         )
       ],
     );
-    return Text("dwadwda");
+  }
+
+  _commentInfoUI() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+      child: Row(
+        children: [
+          Text(
+            "32 likes ",
+            style: textStyleApp.copyWith(
+              fontSize: 12,
+              color: const Color.fromARGB(255, 96, 96, 96),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
+            child: Container(
+              width: 4,
+              height: 4,
+              decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 96, 96, 96),
+                  shape: BoxShape.circle),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
+            child: Text(
+              "8 Comments ",
+              style: textStyleApp.copyWith(
+                fontSize: 12,
+                color: const Color.fromARGB(255, 96, 96, 96),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
