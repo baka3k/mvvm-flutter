@@ -24,7 +24,7 @@ class BaseApp extends StatelessWidget {
       getPages: AppPages.routes,
       translationsKeys: AppTranslation.translations,
       locale: LanguageService.to.locale, // locale
-      fallbackLocale: Locale("en", "US"), // false back
+      fallbackLocale: const Locale("en", "US"), // false back
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
             iconTheme: IconThemeData(color: Colors.blue),
