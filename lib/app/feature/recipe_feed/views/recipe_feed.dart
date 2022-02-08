@@ -83,70 +83,70 @@ class RecipeFeed extends GetWidget {
 
   _buildPageItem(int position) {
     return LayoutBuilder(builder: (context, constrains) {
-      return Column(
+      return Stack(
         children: [
-          _profileUI(constrains.maxWidth),
-          // Flexible(child: Image.asset("assets/images/test_page.png")),
-          Expanded(
-              child: Image.asset(
-            "assets/images/test_page.png",
-            fit: BoxFit.fill,
-          )),
-          _informationUI(constrains.maxWidth),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-            child: Text(
-              "Apparently we had reached a great height in the atmosphere, for the sky was …",
-              style: textStyleApp.copyWith(
-                  color: const Color.fromARGB(255, 168, 168, 168),
-                  fontSize: 12),
-            ),
+          Column(
+            children: [
+              Expanded(child: Image.asset("assets/images/test_page.png")),
+              _informationUI(constrains.maxWidth),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
+                child: Text(
+                  "Apparently we had reached a great height in the atmosphere, for the sky was …",
+                  style: textStyleApp.copyWith(
+                      color: const Color.fromARGB(255, 168, 168, 168),
+                      fontSize: 12),
+                ),
+              ),
+              _commentInfoUI(),
+            ],
           ),
-          _commentInfoUI(),
+          _profileUI(constrains.maxWidth),
         ],
       );
     });
-    // AnimatedContainer(
-    //   duration: const Duration(milliseconds: 200),
-    //   child: _buildPageItem(position),
-    // )
   }
 
   _profileUI(maxWidth) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0),
-          child: Image.asset(
-            "assets/images/test_avatar.png",
-            width: maxWidth * 0.08,
+    return Container(
+      color: backGroundColor.withOpacity(0.9),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18.0, 0.0, 0.0, 0),
+            child: Image.asset(
+              "assets/images/test_avatar.png",
+              width: maxWidth * 0.08,
+              height: maxWidth * 0.08,
+            ),
           ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(4.0, 2.0, 8.0, 2),
-              child: Text(
-                "Profile name",
-                style: textStyleApp.copyWith(
-                    fontSize: 11,
-                    color: const Color.fromARGB(255, 5, 15, 9),
-                    fontWeight: FontWeight.w500),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4.0, 8.0, 8.0, 2),
+                child: Text(
+                  "Profile name",
+                  style: textStyleApp.copyWith(
+                      fontSize: 11,
+                      color: const Color.fromARGB(255, 5, 15, 9),
+                      fontWeight: FontWeight.w500),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(4.0, 2.0, 8.0, 2),
-              child: Text(
-                "2h ago",
-                style: textStyleApp.copyWith(
-                    fontSize: 11,
-                    color: const Color.fromARGB(255, 118, 118, 118)),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(4.0, 2.0, 8.0, 8),
+                child: Text(
+                  "2h ago",
+                  style: textStyleApp.copyWith(
+                      fontSize: 11,
+                      color: const Color.fromARGB(255, 118, 118, 118)),
+                ),
               ),
-            ),
-          ],
-        )
-      ],
+            ],
+          )
+        ],
+      ),
     );
   }
 
@@ -157,7 +157,7 @@ class RecipeFeed extends GetWidget {
       children: [
         Flexible(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
             child: Text(
               "Red Wine and Mint Soufflé ",
               style: textStyleApp.copyWith(
@@ -168,7 +168,7 @@ class RecipeFeed extends GetWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.fromLTRB(8 , 8, 16, 8),
           child: SizedBox(
               width: maxWidth * 0.1,
               height: maxWidth * 0.1,
@@ -183,7 +183,7 @@ class RecipeFeed extends GetWidget {
 
   _commentInfoUI() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+      padding: const EdgeInsets.fromLTRB(16, 0, 8, 0),
       child: Row(
         children: [
           Text(
