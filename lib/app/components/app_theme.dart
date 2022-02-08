@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+const Color canvasColor = Color.fromARGB(255, 48, 190, 118);
 const Color mainColor = Color.fromARGB(255, 48, 190, 118);
-const Color signInBackGroundColor = Color.fromARGB(255, 242, 242, 242); //EE6876
+const Color backGroundColor = Color.fromARGB(255, 242, 242, 242); //EE6876
 const Color topColor = Color.fromARGB(255, 255, 255, 255);
 const Color bottomColor = Color.fromARGB(255, 255, 255, 255);
 const Color textColor = Color.fromARGB(255, 3, 15, 9);

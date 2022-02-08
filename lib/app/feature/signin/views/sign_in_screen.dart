@@ -4,6 +4,7 @@ import 'package:base_source/app/components/app_theme.dart';
 import 'package:base_source/app/components/dialog_loading.dart';
 import 'package:base_source/app/feature/signin/viewmodels/sign_in_view_model.dart';
 import 'package:base_source/app/routes/app_routes.dart';
+import 'package:base_source/app/utils/log.dart';
 import 'package:base_source/generated/locales.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        backgroundColor: signInBackGroundColor,
+        backgroundColor: backGroundColor,
         body: _uiSignIn(),
       ),
     );
@@ -43,14 +44,14 @@ class SignInScreen extends GetWidget<SignInViewModel> {
             onConfirmed: () {},
             onCancel: () {});
       } else {
-        print("abnormal case viewState: $viewState");
+        log("SignInScreen", mess: "abnormal case viewState: $viewState");
       }
     });
   }
 
   _uiSignIn() {
     return LayoutBuilder(builder: (context, constraints) {
-      print("_uiSignIn1 $constraints");
+      log("SignInScreen", mess: "_uiSignIn $constraints");
       return SingleChildScrollView(
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: constraints.maxHeight),
