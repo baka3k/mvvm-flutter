@@ -221,6 +221,37 @@ class RecipeFeed extends GetWidget {
               ),
             ),
           ),
+          const Spacer(),
+          InkWell(
+            onTap: () {},
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(2),
+                border: Border.all(color: mainColor, width: 1),
+                shape: BoxShape.rectangle,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.add,
+                      size: 13,
+                      color: mainColor,
+                    ),
+                    Text(
+                      "Save",
+                      style:
+                          textStyleApp.copyWith(color: mainColor, fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 4,
+          )
         ],
       ),
     );
