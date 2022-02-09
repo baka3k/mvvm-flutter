@@ -11,7 +11,7 @@ class RecipeService extends BaseService {
     try {
       // return
       //   httpGet("https://jsonplaceholder.typicode.com/users", accountModelFromJson);
-      var data = RecipeFeedModel(); // dummy data for test
+      var data = RecipeFeedModel(code: 1,message: ""); // dummy data for test
       return DataResult.success(data);
     } catch (exception) {
       return getError(exception);

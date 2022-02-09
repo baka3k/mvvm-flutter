@@ -1,8 +1,9 @@
+import 'package:base_source/app/routes/app_routes.dart';
 import 'package:base_source/app/utils/log.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../components/app_theme.dart';
-import '../../../routes/app_routes.dart';
+
 import '../viewmodels/recipe_view_model.dart';
 
 class RecipeFeed extends GetWidget<RecipeViewModel> {
