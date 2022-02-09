@@ -1,7 +1,5 @@
 import 'package:base_source/app/base/base_viewmodel.dart';
-import 'package:base_source/data/base/data_result.dart';
 import 'package:base_source/data/photo/model/photo_error.dart';
-import 'package:base_source/data/photo/model/photo_list_model.dart';
 import 'package:base_source/data/photo/photo_repository.dart';
 import 'package:get/get.dart';
 

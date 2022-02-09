@@ -1,3 +1,9 @@
+library user_data;
+
+export '../base/data_result.dart';
+export 'model/users_list_model.dart';
+export 'service/user_service.dart';
+
 import '../base/data_result.dart';
 import 'model/users_list_model.dart';
 import 'service/user_service.dart';

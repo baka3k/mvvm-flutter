@@ -5,5 +5,5 @@ abstract class Routes {
   static const details = '/details';
   static const photoList = '/photolist';
   static const map = '/map';
-  static const recipeFeed = '/recipe_feed';
+  static const recipeFeed = '/recipe';
 }

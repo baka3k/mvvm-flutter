@@ -1,12 +1,11 @@
 import 'package:base_source/app/utils/log.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:get/get_state_manager/get_state_manager.dart';
 import '../../../components/app_theme.dart';
 import '../../../routes/app_routes.dart';
+import '../viewmodels/recipe_view_model.dart';
 
-class RecipeFeed extends GetWidget {
+class RecipeFeed extends GetWidget<RecipeViewModel> {
   const RecipeFeed({Key? key}) : super(key: key);
 
   @override

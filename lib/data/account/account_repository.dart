@@ -1,3 +1,9 @@
+library account_data;
+
+export '../base/data_result.dart';
+export 'model/account_model.dart';
+export 'service/account_service.dart';
+
 import '../base/data_result.dart';
 import 'model/account_model.dart';
 import 'service/account_service.dart';

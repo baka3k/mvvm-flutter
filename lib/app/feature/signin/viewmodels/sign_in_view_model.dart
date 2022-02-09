@@ -1,7 +1,6 @@
 import 'package:base_source/app/base/base_viewmodel.dart';
 import 'package:base_source/app/base/view_state.dart';
 import 'package:base_source/data/account/account_repository.dart';
-import 'package:base_source/data/base/data_result.dart';
 import 'package:base_source/generated/locales.g.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

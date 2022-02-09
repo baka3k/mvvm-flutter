@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+// app color
 const Color canvasColor = Color.fromARGB(255, 48, 190, 118);
 const Color mainColor = Color.fromARGB(255, 48, 190, 118);
 const Color backGroundColor = Color.fromARGB(255, 242, 242, 242); //EE6876
@@ -7,6 +8,11 @@ const Color topColor = Color.fromARGB(255, 255, 255, 255);
 const Color bottomColor = Color.fromARGB(255, 255, 255, 255);
 const Color textColor = Color.fromARGB(255, 3, 15, 9);
 
+const MaterialColor primarySwatch = Colors.green;
+const Brightness brightness = Brightness.light;
+const Color primaryColor = backGroundColor;
+const Color  scaffoldBackgroundColor = backGroundColor;
+// text style
 const TextStyle textStyleLarge = TextStyle(fontSize: 15, color: textColor);
 const TextStyle textStyleMedium = TextStyle(fontSize: 13, color: textColor);
 const TextStyle textStyleSmall = TextStyle(fontSize: 11, color: textColor);

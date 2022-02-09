@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import 'app/components/app_theme.dart';
 import 'app/routes/app_pages.dart';
 
 void main() {
@@ -27,13 +28,13 @@ class BaseApp extends StatelessWidget {
       fallbackLocale: const Locale("en", "US"), // false back
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-            iconTheme: IconThemeData(color: Colors.blue),
+            iconTheme: IconThemeData(color: primarySwatch),
             elevation: 0.0,
             color: Colors.white),
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-        primaryColor: Colors.amber,
-        scaffoldBackgroundColor: Colors.red,
+        primarySwatch: primarySwatch,
+        brightness: brightness,
+        primaryColor: primaryColor,
+        scaffoldBackgroundColor: scaffoldBackgroundColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: HomeScreen()
