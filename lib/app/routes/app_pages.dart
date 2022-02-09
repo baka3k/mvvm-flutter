@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 import 'app_routes.dart';
 
 class AppPages {
-  static const initial = Routes.recipeFeed;
+  static const initial = Routes.splash;
 
   static final routes = [
     GetPage(

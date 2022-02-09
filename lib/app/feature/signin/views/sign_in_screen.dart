@@ -161,7 +161,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
 
   _welcomeView(double widthScreen, double heightScreen) {
     return Stack(
-      alignment: Alignment.centerLeft,
+      // alignment: Alignment.centerLeft,
       children: [
         Image.asset(
           "assets/images/scratch_bg_1.png",
@@ -169,21 +169,25 @@ class SignInScreen extends GetWidget<SignInViewModel> {
           width: widthScreen,
           height: heightScreen * 0.35,
         ),
-        Positioned(
-          top: widthScreen * 0.06 + 18,
-          left: widthScreen * 0.06,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(15, 20, 15, 10),
           child: Image.asset(
             "assets/images/scratch_logo.png",
             width: widthScreen * 0.27,
           ),
         ),
-        Padding(
-            padding: EdgeInsets.all(widthScreen * 0.06),
-            child: Text(
-              LocaleKeys.signin_welcome_back.tr,
-              style: textStyleApp.copyWith(
-                  fontWeight: FontWeight.bold, fontSize: 15),
-            ))
+        Positioned.fill(
+          child: Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(15, 20, 15, 10),
+                child: Text(
+                  LocaleKeys.signin_welcome_back.tr,
+                  style: textStyleApp.copyWith(
+                      fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+              )),
+        ),
       ],
     );
   }

@@ -1,8 +1,10 @@
 import 'package:base_source/app/utils/log.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:get/get_state_manager/get_state_manager.dart';
 import '../../../components/app_theme.dart';
+import '../../../routes/app_routes.dart';
 
 class RecipeFeed extends GetWidget {
   const RecipeFeed({Key? key}) : super(key: key);
@@ -224,7 +226,9 @@ class RecipeFeed extends GetWidget {
           ),
           const Spacer(),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              gotoSaveScreen();
+            },
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(2),
@@ -256,5 +260,9 @@ class RecipeFeed extends GetWidget {
         ],
       ),
     );
+  }
+
+  void gotoSaveScreen() {
+    Get.toNamed(Routes.home);
   }
 }
