@@ -72,7 +72,7 @@ class RecipeFeed extends GetWidget {
   }
 
   _uiRecipe() {
-    final PageController controller = PageController(viewportFraction: 0.9);
+    final PageController controller = PageController(viewportFraction: 0.88);
     return PageView.builder(
         // pageSnapping: false,
         physics: const BouncingScrollPhysics(),
@@ -85,6 +85,7 @@ class RecipeFeed extends GetWidget {
 
   _buildPageItem(int position) {
     return LayoutBuilder(builder: (context, constrains) {
+      log("_informationUI", mess: "constrains $constrains");
       return Stack(
         children: [
           Column(
