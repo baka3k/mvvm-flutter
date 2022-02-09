@@ -8,7 +8,7 @@ import 'model/recipe_feed_model.dart';
 import 'service/recipe_feed_service.dart';
 
 abstract class RecipeFeedRepository {
-  Future<DataResult<RecipeFeedModel>> getAllRecipeFeed();
+  Future<DataResult<List<RecipeFeedModel>>> getAllRecipeFeed();
 }
 class RecipeFeedRepositoryImpl implements RecipeFeedRepository {
   final RecipeService _recipeService;
@@ -16,7 +16,7 @@ class RecipeFeedRepositoryImpl implements RecipeFeedRepository {
   RecipeFeedRepositoryImpl(this._recipeService);
 
   @override
-  Future<DataResult<RecipeFeedModel>> getAllRecipeFeed() {
+  Future<DataResult<List<RecipeFeedModel>>> getAllRecipeFeed() {
     return _recipeService.getRecipes();
   }
 }

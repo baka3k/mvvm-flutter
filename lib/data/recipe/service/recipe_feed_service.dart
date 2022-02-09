@@ -7,12 +7,12 @@ import '../../base/data_result.dart';
 class RecipeService extends BaseService {
   RecipeService(NetworkInfor networkInfor) : super(networkInfor);
 
-  Future<DataResult<RecipeFeedModel>> getRecipes() async {
+  Future<DataResult<List<RecipeFeedModel>>> getRecipes() async {
     try {
       // return
       //   httpGet("https://jsonplaceholder.typicode.com/users", accountModelFromJson);
       var data = RecipeFeedModel(code: 1,message: ""); // dummy data for test
-      return DataResult.success(data);
+      return DataResult.success([data]);
     } catch (exception) {
       return getError(exception);
     }

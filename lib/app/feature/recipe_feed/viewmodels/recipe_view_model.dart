@@ -1,15 +1,18 @@
 import 'package:base_source/app/base/base_viewmodel.dart';
-import 'package:base_source/app/feature/recipe_feed/views/recipe_feed.dart';
+import 'package:base_source/app/feature/recipe_feed/views/recipe_feed_screen.dart';
+import 'package:base_source/app/utils/log.dart';
 import 'package:base_source/data/recipe/recipe_feed_repository.dart';
 import 'package:get/get.dart';
 
 class RecipeViewModel extends BaseViewModel {
   final RecipeFeedRepository _recipeFeedRepository;
-  final List<RecipeFeed> _reipeFeeds = [];
+  final List<RecipeFeedModel> _reipeFeeds = [];
 
-  List<RecipeFeed> get reipeFeeds => _reipeFeeds;
+  List<RecipeFeedModel> get reipeFeeds => _reipeFeeds;
 
-  RecipeViewModel(this._recipeFeedRepository);
+  RecipeViewModel(this._recipeFeedRepository){
+    loadRecipeFeeds();
+  }
 
   loadRecipeFeeds() async {
     change(null, status: RxStatus.loading());
@@ -28,8 +31,13 @@ class RecipeViewModel extends BaseViewModel {
     change("_photoError", status: RxStatus.error(error));
   }
 
-  _setRecipeFeedsSucces(RecipeFeedModel? data) {
-    // _reipeFeeds = data!;
-    change(_reipeFeeds, status: RxStatus.success());
+  _setRecipeFeedsSucces(List<RecipeFeedModel>? data) {
+    if (data != null && data.isNotEmpty) {
+      _reipeFeeds.addAll(data);
+      change(_reipeFeeds, status: RxStatus.success());
+    } else {
+      log("RecipeScreen",
+          mess: "#_setRecipeFeedsSucces()  data null or empty", error: "$data");
+    }
   }
 }

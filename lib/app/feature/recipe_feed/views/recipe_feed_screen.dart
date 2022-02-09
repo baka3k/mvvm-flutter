@@ -2,19 +2,20 @@ import 'package:base_source/app/routes/app_routes.dart';
 import 'package:base_source/app/utils/log.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../components/app_error.dart';
 import '../../../components/app_theme.dart';
 
 import '../viewmodels/recipe_view_model.dart';
 
-class RecipeFeed extends GetWidget<RecipeViewModel> {
-  const RecipeFeed({Key? key}) : super(key: key);
+class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
+  const RecipeFeedScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: backGroundColor,
         appBar: _buildAppBar(),
-        body: _uiRecipe(),
+        body: _bodyUi(),
         bottomNavigationBar: _buildBottomNavigationBar());
   }
 
@@ -33,6 +34,19 @@ class RecipeFeed extends GetWidget<RecipeViewModel> {
             onPressed: () {},
             icon: Image.asset("assets/images/recipe_feed_icon_email.png")),
       ],
+    );
+  }
+
+  _bodyUi() {
+    return controller.obx(
+      (state) => _uiRecipe(),
+      onEmpty: const Text('No data found'),
+      onError: (error) => AppError(
+        errortxt: error ?? "",
+      ),
+      onLoading: const Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 

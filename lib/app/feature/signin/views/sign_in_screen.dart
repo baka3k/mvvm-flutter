@@ -197,7 +197,7 @@ class SignInScreen extends GetWidget<SignInViewModel> {
   }
 
   void goToNextScreen() {
-    Get.offAllNamed(Routes.home);
+    Get.offAllNamed(Routes.recipeFeed);
   }
 
   void _showToast(context, mess) {
