@@ -1,23 +1,45 @@
 import 'dart:convert';
-RecipeFeedModel recipeFeedModelFromJson(String str) => RecipeFeedModel.fromJson(json.decode(str));
-String recipeFeedModelToJson(RecipeFeedModel data) => json.encode(data.toJson());
+
+List<RecipeFeedModel> recipeFeedModelFromJson(String str) =>
+    List<RecipeFeedModel>.from(
+        json.decode(str).map((x) => RecipeFeedModel.fromJson(x)));
+
+String recipeFeedModelToJson(List<RecipeFeedModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class RecipeFeedModel {
   RecipeFeedModel({
-    required this.code,
-    this.message,
+    this.id,
+    this.author,
+    this.width,
+    this.height,
+    this.url,
+    this.downloadUrl,
   });
 
-  int code;
-  String? message;
+  String? id;
+  String? author;
+  int? width;
+  int? height;
+  String? url;
+  String? downloadUrl;
 
-  factory RecipeFeedModel.fromJson(Map<String, dynamic> json) => RecipeFeedModel(
-    code: json["code"],
-    message: json["message"],
-  );
+  factory RecipeFeedModel.fromJson(Map<String, dynamic> json) =>
+      RecipeFeedModel(
+        id: json["id"],
+        author: json["author"],
+        width: json["width"],
+        height: json["height"],
+        url: json["url"],
+        downloadUrl: json["download_url"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "code": code,
-    "message": message,
-  };
+        "id": id,
+        "author": author,
+        "width": width,
+        "height": height,
+        "url": url,
+        "downloadUrl": downloadUrl,
+      };
 }

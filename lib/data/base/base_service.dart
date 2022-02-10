@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:base_source/app/hardware/connection.dart';
+import 'package:base_source/app/utils/log.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
@@ -18,12 +19,13 @@ abstract class BaseService extends GetConnect {
 
   Future<DataResult<T>> httpGet<T>(String url, jsonParseFunc,
       {Map<String, String>? headers}) async {
-    print("BaseService #httpGet() $url");
+    log("BaseService", mess: "BaseService #httpGet() $url");
     var network = await _networkInfor.isNetworkConnected();
     if (network) {
       var response = await get(url, headers: headers).timeout(timeOutDuration);
-      print(
-          "BaseService #httpGet() StatusCode: ${response.statusCode} || ResponseData: ${response.bodyString}");
+      log("BaseService",
+          mess:
+              "BaseService #httpGet() StatusCode: ${response.statusCode} || ResponseData: ${response.bodyString} || $response" );
       if (response.bodyString == null || response.bodyString!.isEmpty) {
         return DataResult.failure(
             APIFailure(invalidResponse, 'Invalid Response'));

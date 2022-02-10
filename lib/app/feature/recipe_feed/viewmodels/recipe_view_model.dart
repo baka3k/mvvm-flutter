@@ -7,10 +7,13 @@ import 'package:get/get.dart';
 class RecipeViewModel extends BaseViewModel {
   final RecipeFeedRepository _recipeFeedRepository;
   final List<RecipeFeedModel> _reipeFeeds = [];
+  final _currentPage = 0.obs;
+
+  get currentPage => _currentPage;
 
   List<RecipeFeedModel> get reipeFeeds => _reipeFeeds;
 
-  RecipeViewModel(this._recipeFeedRepository){
+  RecipeViewModel(this._recipeFeedRepository) {
     loadRecipeFeeds();
   }
 
@@ -39,5 +42,9 @@ class RecipeViewModel extends BaseViewModel {
       log("RecipeScreen",
           mess: "#_setRecipeFeedsSucces()  data null or empty", error: "$data");
     }
+  }
+
+  void setCurrentPage(int currentPage) {
+    _currentPage.value = currentPage;
   }
 }

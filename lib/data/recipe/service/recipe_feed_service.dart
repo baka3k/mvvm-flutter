@@ -9,10 +9,11 @@ class RecipeService extends BaseService {
 
   Future<DataResult<List<RecipeFeedModel>>> getRecipes() async {
     try {
-      // return
-      //   httpGet("https://jsonplaceholder.typicode.com/users", accountModelFromJson);
-      var data = RecipeFeedModel(code: 1,message: ""); // dummy data for test
-      return DataResult.success([data]);
+      // for test
+      return httpGet("https://picsum.photos/v2/list?page=1&limit=100", recipeFeedModelFromJson);
+      // return httpGet("https://picsum.photos/v2/list", recipeFeedModelFromJson);
+      //var data = RecipeFeedModel(code: 1,message: ""); // dummy data for test
+      //return DataResult.success([data]);
     } catch (exception) {
       return getError(exception);
     }

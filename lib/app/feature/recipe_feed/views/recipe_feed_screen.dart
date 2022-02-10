@@ -1,5 +1,6 @@
 import 'package:base_source/app/routes/app_routes.dart';
 import 'package:base_source/app/utils/log.dart';
+import 'package:base_source/data/recipe/model/recipe_feed_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../components/app_error.dart';
@@ -27,11 +28,14 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
         IconButton(
             onPressed: () {
               log("RecipeFeed", mess: "log me");
+              controller.loadRecipeFeeds();
             },
             icon:
                 Image.asset("assets/images/recipe_feed_icon_notification.png")),
         IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(Routes.home);
+            },
             icon: Image.asset("assets/images/recipe_feed_icon_email.png")),
       ],
     );
@@ -88,18 +92,38 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
   }
 
   _uiRecipe() {
-    final PageController controller = PageController(viewportFraction: 0.88);
+    final PageController pageController =
+        PageController(viewportFraction: 0.88);
     return PageView.builder(
-        // pageSnapping: false,
         physics: const BouncingScrollPhysics(),
-        itemCount: 10,
-        controller: controller,
+        itemCount: controller.reipeFeeds.length,
+        controller: pageController,
+        onPageChanged: (currentPage){
+          controller.setCurrentPage(currentPage);
+        },
         itemBuilder: (context, position) {
-          return _buildPageItem(position);
+          // int currentPage = controller.currentPage.value;
+          RecipeFeedModel recipeFeedModel = controller.reipeFeeds[position];
+          return _buildPageItem(position, recipeFeedModel);
         });
   }
 
-  _buildPageItem(int position) {
+  _buildPhotoItem(String? url) {
+    log("RecipeFeedScreen", mess: "_buildPhotoItem() url: $url");
+    if (url == null || url.isEmpty) {
+      return Image.asset(
+        "assets/images/test_page.png",
+        fit: BoxFit.fill,
+      );
+    } else {
+      return Image.network(
+        url,
+        fit: BoxFit.cover,
+      );
+    }
+  }
+
+  _buildPageItem(int position, RecipeFeedModel recipeFeedModel) {
     return LayoutBuilder(builder: (context, constrains) {
       log("_informationUI", mess: "constrains $constrains");
       return Stack(
@@ -109,10 +133,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
               Expanded(
                   child: AspectRatio(
                       aspectRatio: 295 / 396,
-                      child: Image.asset(
-                        "assets/images/test_page.png",
-                        fit: BoxFit.fill,
-                      ))),
+                      child: _buildPhotoItem(recipeFeedModel.downloadUrl))),
               _informationUI(constrains.maxWidth),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
@@ -126,13 +147,13 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
               _commentInfoUI(),
             ],
           ),
-          _profileUI(constrains.maxWidth),
+          _profileUI(constrains.maxWidth,recipeFeedModel),
         ],
       );
     });
   }
 
-  _profileUI(maxWidth) {
+  _profileUI(maxWidth,RecipeFeedModel recipeFeedModel) {
     return Container(
       color: backGroundColor.withOpacity(0.9),
       child: Row(
@@ -152,7 +173,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(4.0, 8.0, 8.0, 2),
                 child: Text(
-                  "Profile name",
+                  "${recipeFeedModel.author}",
                   style: textStyleApp.copyWith(
                       fontSize: 11,
                       color: const Color.fromARGB(255, 5, 15, 9),
