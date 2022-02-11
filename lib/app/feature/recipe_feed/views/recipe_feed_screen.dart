@@ -1,11 +1,12 @@
 import 'package:base_source/app/routes/app_routes.dart';
 import 'package:base_source/app/utils/log.dart';
 import 'package:base_source/data/recipe/model/recipe_feed_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../components/app_error.dart';
 import '../../../components/app_theme.dart';
-
 import '../viewmodels/recipe_view_model.dart';
 
 class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
@@ -17,12 +18,12 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
         backgroundColor: backGroundColor,
         appBar: _buildAppBar(),
         body: _bodyUi(),
-        bottomNavigationBar: _buildBottomNavigationBar());
+        bottomNavigationBar: _uiBottomNavigationBar());
   }
 
   _buildAppBar() {
     return AppBar(
-      title: _buildIconScratch(),
+      title: _uiIconScratch(),
       backgroundColor: backGroundColor,
       actions: [
         IconButton(
@@ -43,7 +44,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
 
   _bodyUi() {
     return controller.obx(
-      (state) => _uiRecipe(),
+      (state) => _uiRecipePageView(),
       onEmpty: const Text('No data found'),
       onError: (error) => AppError(
         errortxt: error ?? "",
@@ -54,7 +55,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
     );
   }
 
-  _buildIconScratch() {
+  _uiIconScratch() {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return Image.asset(
@@ -65,7 +66,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
     );
   }
 
-  _buildBottomNavigationBar() {
+  _uiBottomNavigationBar() {
     return BottomNavigationBar(
       showSelectedLabels: false,
       showUnselectedLabels: false,
@@ -91,24 +92,24 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
     );
   }
 
-  _uiRecipe() {
+  _uiRecipePageView() {
     final PageController pageController =
         PageController(viewportFraction: 0.88);
     return PageView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: controller.reipeFeeds.length,
         controller: pageController,
-        onPageChanged: (currentPage){
+        onPageChanged: (currentPage) {
           controller.setCurrentPage(currentPage);
         },
         itemBuilder: (context, position) {
           // int currentPage = controller.currentPage.value;
           RecipeFeedModel recipeFeedModel = controller.reipeFeeds[position];
-          return _buildPageItem(position, recipeFeedModel);
+          return _uiPageItem(position, recipeFeedModel);
         });
   }
 
-  _buildPhotoItem(String? url) {
+  _uiPhotoItem(String? url) {
     log("RecipeFeedScreen", mess: "_buildPhotoItem() url: $url");
     if (url == null || url.isEmpty) {
       return Image.asset(
@@ -116,44 +117,58 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
         fit: BoxFit.fill,
       );
     } else {
-      return Image.network(
-        url,
-        fit: BoxFit.cover,
+      return CachedNetworkImage(
+        imageUrl: url,
+        imageBuilder: (context, imageProvider) {
+          return Container(
+            decoration: BoxDecoration(
+                image:
+                    DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+          );
+        },
+        placeholder: (context, url) => const SizedBox(
+            width: 60,
+            height: 60,
+            child: Center(child: CircularProgressIndicator())),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
       );
     }
   }
 
-  _buildPageItem(int position, RecipeFeedModel recipeFeedModel) {
+  _uiPageItem(int position, RecipeFeedModel recipeFeedModel) {
     return LayoutBuilder(builder: (context, constrains) {
       log("_informationUI", mess: "constrains $constrains");
-      return Stack(
-        children: [
-          Column(
-            children: [
-              Expanded(
-                  child: AspectRatio(
-                      aspectRatio: 295 / 396,
-                      child: _buildPhotoItem(recipeFeedModel.downloadUrl))),
-              _informationUI(constrains.maxWidth),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
-                child: Text(
-                  "Apparently we had reached a great height in the atmosphere, for the sky was …",
-                  style: textStyleApp.copyWith(
-                      color: const Color.fromARGB(255, 168, 168, 168),
-                      fontSize: 12),
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Expanded(
+                    child: AspectRatio(
+                        aspectRatio: 295 / 396,
+                        child: _uiPhotoItem(recipeFeedModel.downloadUrl))),
+                _uiInformation(constrains.maxWidth),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 0),
+                  child: Text(
+                    "Apparently we had reached a great height in the atmosphere, for the sky was …",
+                    style: textStyleApp.copyWith(
+                        color: const Color.fromARGB(255, 168, 168, 168),
+                        fontSize: 12),
+                  ),
                 ),
-              ),
-              _commentInfoUI(),
-            ],
-          ),
-          _profileUI(constrains.maxWidth,recipeFeedModel),
-        ],
+                _uiCommentInfo(),
+              ],
+            ),
+            _uiProfile(constrains.maxWidth, recipeFeedModel),
+          ],
+        ),
       );
     });
   }
 
-  _profileUI(maxWidth,RecipeFeedModel recipeFeedModel) {
+  _uiProfile(maxWidth, RecipeFeedModel recipeFeedModel) {
     return Container(
       color: backGroundColor.withOpacity(0.9),
       child: Row(
@@ -196,7 +211,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
     );
   }
 
-  _informationUI(maxWidth) {
+  _uiInformation(maxWidth) {
     log("_informationUI", mess: "maxWidth $maxWidth");
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -227,7 +242,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
     );
   }
 
-  _commentInfoUI() {
+  _uiCommentInfo() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 0, 8, 0),
       child: Row(
@@ -262,7 +277,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
           const Spacer(),
           InkWell(
             onTap: () {
-              gotoSaveScreen();
+              _gotoSaveScreen();
             },
             child: Container(
               decoration: BoxDecoration(
@@ -297,7 +312,7 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
     );
   }
 
-  void gotoSaveScreen() {
+  _gotoSaveScreen() {
     Get.toNamed(Routes.home);
   }
 }
