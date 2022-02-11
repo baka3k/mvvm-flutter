@@ -170,7 +170,11 @@ class RecipeFeedScreen extends GetWidget<RecipeViewModel> {
 
   _uiProfile(maxWidth, RecipeFeedModel recipeFeedModel) {
     return Container(
-      color: backGroundColor.withOpacity(0.9),
+      decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [
+        backGroundColor.withOpacity(0.95),
+        backGroundColor.withOpacity(0.3)
+      ], begin: const Alignment(0, -1), end: const Alignment(0, 1))),
       child: Row(
         children: [
           Padding(

@@ -12,7 +12,7 @@ class SplashScreen extends GetWidget<SplashViewModel> {
     _observeScreenState();
     return Scaffold(
       backgroundColor: mainColor,
-      body: SafeArea(child: _backgroundPhoto()),
+      body: _backgroundPhoto(),
     );
   }
 
